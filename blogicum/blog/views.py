@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from django.http import Http404
+
 posts = [
     {
         'id': 0,
@@ -52,8 +53,11 @@ def index(request):
 
 
 def post_detail(request, id):
+    post = next((post for post in posts if post["id"] == id), None)
+    if post is None:
+        raise Http404(f'Пост c номером {id} не существует')
     template = 'blog/detail.html'
-    context = {'post': posts[id]}
+    context = {'post': post}
     return render(request, template, context)
 
 

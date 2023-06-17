@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>{% include "includes/inhead.html" %}
-    <title>{% block title %}{% endblock %}</title>
+  <head>
+    {% include "includes/inhead.html" %}
+    <title>
+      {% block title %}
+      {% endblock %}
+    </title>
   </head>
-  <body>{% include "includes/header.html" %}
+  <body>
+    {% include "includes/header.html" %}
     <main class="pt-5 my-5">       
-        <div class="container">
-          {% block content %}
-          {% endblock %}
-        </div>   
+      <div class="container">
+        <div class="container py-5">
+          {% block content %}{% endblock %}
+        </div> 
+      </div>   
     </main>
     {% include "includes/footer.html" %}   
   </body>
